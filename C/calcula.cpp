@@ -13,24 +13,24 @@ cout<<"N°: ";
 cin>>a;
 cout<<"N°: ";
 cin>>b;
-cout<<"Operacion: s(+), r(-), m(*), d(/) = ";
+cout<<"Operacion: suma(s), resta(r), multiplica(m), divide(d) = ";
 cin>>c;
 
 if (c=="s")
 {
-cout<<"Resultado: "<<(a+b)<<endl;
+cout<<"Resultado de la suma es : "<<(a+b)<<endl;
 }
 if (c=="r")
 {
-cout<<"Resultado: "<<(a-b)<<endl;
+cout<<"Resultado de la resta es : "<<(a-b)<<endl;
 }
 if (c=="m")
 {
-cout<<"Resultado: "<<(a*b)<<endl;
+cout<<"Resultado de la multiplicacion es: "<<(a*b)<<endl;
 }
 if (c=="d")
 {
-cout<<"Resultado: "<<(a/b)<<endl;
+cout<<"Resultado de la divicion es : "<<(a/b)<<endl;
 }
 cout<<"Fin ----"<<endl;
 
