@@ -1,0 +1,16 @@
+def d():
+	archi=open('e/e.txt', 'a')
+	archi=open('e/a.txt', 'a')
+	archi=open('e/b.txt', 'a')
+	archi.close()
+d()
+def gd():
+	archi=open('e/e.txt', 'a')
+	archi.write('hola')
+	archi=open('e/a.txt', 'a')
+	archi.write('funciona escribir despues de abrir')
+	archi=open('e/b.txt', 'a')
+	archi.write('hola \n')
+	archi.write('hola')
+	archi.close()
+gd()
