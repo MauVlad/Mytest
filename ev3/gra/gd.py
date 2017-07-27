@@ -3,10 +3,17 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as pl
 import numpy as np
 
-ax = pl.gca()
-n = 10 ##1024
-x = np.random.normal(n) ##(0,1,n)
-y = np.random.normal(n) ##(0,1,n)
+a = input ('escribe un numero: ')
+b = input ('escribe otro numero: ')
 
-pl.scatter(x,y)
-pl.savefig('gd.jpg')
+for a in [a,3,4]:
+
+	print (a,b)
+	ax = pl.gca()
+	n = 10 ##1024
+	x = (a) #np.random.normal() ##(0,1,n)
+	y = (b) #np.random.normal() ##(0,1,n)
+	#b = b + 1
+	pl.scatter(x,y)
+	pl.show()
+	pl.savefig('gd.jpg')
