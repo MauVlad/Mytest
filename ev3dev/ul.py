@@ -33,8 +33,8 @@ last_dy = 0
 
 while not ts.value():
 	if ir.value() > 30:
-		x = ir.value(1)
-		y = ir.value(2)
+		x = ir.value()
+		y = ir.value()
 		dx = X_REF - x
 		integral_x = integral_x + dx
 		derivative_x = dx - last_dx
