@@ -1,0 +1,15 @@
+import math as mt
+import numpy as np
+
+c = input('valor de hipotenusa: ')
+an = input('valor del angulo: ')
+
+a = c*mt.cos(mt.radians(an)print(mt.cos(mt.radians(an)))
+(mt.radians(an))
+
+print(a,b)
+
+a = c*np.cos(an)
+b = c*np.sin(an)
+
+print(a,b)
