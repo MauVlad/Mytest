@@ -1,28 +1,37 @@
 import matplotlib.pyplot as plt
+
+#plt.figure('scatter')
+import math as mt
 import numpy as np
 
-plt.isinteractive()
-False
+j,k,d = 0,0,0
 
-plt.plot([1,2,3,4,5])
+while True:
 
-plt.show()
+	c = float(input('valor de hipotenusa: '))
+	an = float(input('valor del angulo: '))
 
-plt.ion()
-plt.plot([1,2,3,4])
+	d = d + an
+	a = c*mt.cos(mt.radians(d))
+	b = c*mt.sin(mt.radians(d))
+	print(a,b)
 
-plt.ishold()
-True
+#	a = c*np.cos(np.radians(an))
+#	b = c*np.sin(np.radians(an))
 
-plt.plot(np.random.rand(10))
-plt.plot(np.random.rand(10))
-plt.show()
+	print(a,b)
 
-plt.figure('scatter')
-plt.figure('plot')
-a = np.random.rand(100)
-b = np.random.rand(100)
-plt.figure('scatter')
-plt.scatter(a,b)
-plt.figure('plot')
-plt.plot(a,b)
+#	plt.figure('plot')
+
+	x =(j,a) #np.random.rand(2)
+	y =(k,b) #np.random.rand(2)
+	print (x,y)
+#plt.figure('scatter')
+#plt.scatter(a,b)
+#plt.show()
+	plt.figure('plot')
+	plt.plot(x,y)
+#	plt.show()
+	plt.savefig('lineas.jpg')
+	j,k = (a,b) 
+#	a,b = (a+b,b+a)
