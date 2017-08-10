@@ -9,12 +9,33 @@ import random
 #ir.mode = 'IR-PROX'
 context = zmq.Context()
 s = context.socket(zmq.REQ)
-s.connect("tcp://192.168.1.79:5376")
+s1 = context.socket(zmq.REQ)
+s.connect("tcp://192.168.1.79:7535")
+s1.connect("tcp://192.168.1.79:6763")
+
+an = '0'
 
 while True:
 #	d = str (ir.value())
 #	print (type(d))
-	s.send_string('dssdas')
+	v = input('magnitud: ')
+
+	s.send_string(v)
 	m=s.recv()
 	print (m)
-	sleep(1)
+	s1.send_string(an)
+	m=s1.recv()
+	print (m)
+
+#	a = (v, an)
+#	print (type (a))
+
+#	for a in a:
+
+#		print (a)
+#		s.send_string(a)
+#		m=s.recv()
+#		print (m)
+#		sleep(1)
+
+	an = input('angulo: ')
