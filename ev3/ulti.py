@@ -73,12 +73,12 @@ while not ts.value():
 
 		md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold")
 		sleep(2)
-		z = (x - y)
+		z = (x > y)
 		print (z)
 		Sound.beep()
 		sleep(2)
 
-		if z < 0:
+		if z == False:
 			Sound.speak('Left').wait()
 			print("izquierda")
 			m1.run_timed(time_sp=1500, speed_sp=-350, stop_action='brake')
@@ -98,7 +98,7 @@ while not ts.value():
 			sleep(2)
 			Sound.beep()
 
-		elif z > 0:
+		elif z == True:
 			Sound.speak('Right').wait()
 			print ("derecha")
 			m1.run_timed(time_sp=1500, speed_sp=350, stop_action='brake')

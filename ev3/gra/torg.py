@@ -6,7 +6,7 @@ import canvasvg
 turtle.colormode(255)
 red = 125
 green = 70
-blue = 38        
+blue = 38
 pen = 10
 def saveImg():
     print("Done.")
