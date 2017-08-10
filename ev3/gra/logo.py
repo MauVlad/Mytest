@@ -5,48 +5,48 @@ from turtle import *
 import turtle
 
 
-setup(1024,900) #configura el tamaño de la ventana
+setup(600,600) #configura el tamaño de la ventana
 
 def dibuja_rombo(velocidad):
     turtle.speed(velocidad)
-    turtle.pensize(5)
+    turtle.pensize(3)
     turtle.penup()
-    turtle.right(90)
-    turtle.forward(100)
-    turtle.right(90)
-    turtle.forward(25)
+    turtle.right(70)
+    turtle.forward(80)
+    turtle.right(70)
+    turtle.forward(15)
     turtle.pencolor("blue")
-    turtle.right(180)
+    turtle.right(165)
     turtle.pendown()
-    turtle.left(40)
+    turtle.left(30)
 
     for i in range(3):
-        turtle.forward(200)
-        turtle.left(90)
+        turtle.forward(150)
+        turtle.left(70)
 
 
-    turtle.forward(200)
-    turtle.left(135)
-    turtle.forward(277)
+    turtle.forward(250)
+    turtle.left(125)
+    turtle.forward(240)
     turtle.penup()
-    turtle.backward(300)
+    turtle.backward(250)
     turtle.write("Pythonizame")
     turtle.hideturtle()
 
 def dibuja_python(velocidad):
     pl = turtle.Turtle()
     pl.speed(velocidad)
-    pl.pensize(5)
+    pl.pensize(3)
     pl.fillcolor("gray")
     pl.penup()
-    pl.left(90)
-    pl.forward(110)
-    pl.right(90)
-    pl.forward(20)
+    pl.left(70)
+    pl.forward(90)
+    pl.right(70)
+    pl.forward(15)
     pl.pendown()
     pl.begin_fill()
-    pl.backward(75)
-    pl.right(90)
+    pl.backward(65)
+    pl.right(70)
     pl.forward(50)
     pl.left(90)
     pl.forward(50)

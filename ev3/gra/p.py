@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
  
-COUNT = 100
+COUNT = 1000
 fig, ax = plt.subplots()
 line, = ax.plot([], [])
 ax.set_ylim([-1.5, 1.5])
@@ -17,7 +17,7 @@ def next():
 		yield i
 def update(i):
 	xdata.append(i)
-	y = np.sin(i / 10.)
+	y = np.sin(i / 100.)
 	ydata.append(y)
 	line.set_data(xdata, ydata)
 	return line,

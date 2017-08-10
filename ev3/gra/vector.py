@@ -1,8 +1,8 @@
 import math as mt
 import numpy as np
 
-c = input('valor de hipotenusa: ')
-an = input('valor del angulo: ')
+c = float (input('valor de hipotenusa: '))
+an = float(input('valor del angulo: '))
 
 a = c*mt.cos(mt.radians(an))
 b = c*mt.sin(mt.radians(an))

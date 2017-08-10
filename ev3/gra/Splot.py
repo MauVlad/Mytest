@@ -36,5 +36,5 @@ ax2.legend(handles, colors)
 ax2.grid(True)
 ax2.set_aspect(1./ax2.get_data_ratio())
 """
-#plt.show()
-plt.savefig('color.jpg')
+plt.show()
+#plt.savefig('color.jpg')
