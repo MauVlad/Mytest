@@ -13,26 +13,38 @@ ir = InfraredSensor(); assert ir.connected, "Por favor, conecte el InfraredSenso
 ts = TouchSensor(); assert ts.connected, "Por favor, conecte el TouchSensor"
 ##cl = ColorSensor(); assert cl.connected, "Por favor, conecte el ColorSensor"
 
+##Modo de sensores##
+ir.mode = 'IR-PROX'
+#cl.mode = 'COL-AMBIENT'
+
 #Limite de velocidad de los motores##
 def lim_speed(speed):
         if speed > 800:
                 speed = 800
-        elif speed < 400:
-                speed = 400
+        elif speed < 450:
+                speed = 450
         return speed
 
 ###
 def muestra():
-	md.run_to_rel_pos(position_sp=-87.5, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
-	md.wait_while('runnig')
-	sleep(1)
+        md.run_to_rel_pos(position_sp=-87.5, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
+        md.wait_while('runnig')
+        sleep(1)
+
+#Datos de las ganancias##
+X_REF = 130
+Y_REF = 130
+KP = 0.4
+KI = 0.02
+KD = 0.05
+GAIN = 10
 
 #Datos de las ganancias##
 X_REF = 120
 Y_REF = 150
-KP = 0.5
-KI = 0.02
-KD = 0.05
+KP = 0.4
+KI = 0.01
+KD = 0.005
 GAIN = 10
 
 ##Datos iniciales##
@@ -46,11 +58,13 @@ integral_y = 0
 derivative_y = 0
 last_dy = 0
 
+z = 0
+an = 0
 ##Entrando al ciclo while##
 while not ts.value():
 
         v = ((ir.value()) * 0.7) ##convercion a cm de la distacia detectada
-        print(v)
+
 ##Primera condicion por arriba de un valor de v el robot se movera##
         if v > 35:
                 print (ir.value(), v)
@@ -77,8 +91,8 @@ while not ts.value():
 ##Para determinar la distacia que recorre el robot se toma como parametro la posicion de los motorres##
                 pos =(((m_i.position)+(m_d.position))/2) ##Posicion absoluta de los dos motores
                 cm =(pos * 0.0275) ##Convercion a cm por grados
-		rue = (pos/360)
-		print (pos,rue,cm)
+                rue = (pos/360)
+                print (pos,rue,cm)
 ##Segunda condicion para la toma de decicion##
         else:
 
@@ -89,67 +103,71 @@ while not ts.value():
                 md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
                 md.wait_while('runnig')
                 sleep(1)
-		x = ir.value()
+                x = ir.value()
+                sleep(1)
+                print(x)
+
+                muestra()
+                x1= ir.value()
+                sleep(1)
+                print (x1)
+                if x > x1:
+                        z = x
+                        an = (1500,350,-350)
+                else:
+                        z = x1
+                        an = (750,350,-350)
+
+                muestra()
+                xy = ir.value()
+                print(1)
+                print(xy)
+
+                muestra()
+                y1 = irvalue()
+                pritn(y1)
+                if z > y1:
+                        z = z
+                        an
+                else:
+                        z = y1
+                        an = (750,-350,350)
+
+                muestra()
+                y = irvalue()
 		sleep(1)
-		print(x)
+                print(y)
 
-		muestra()
-		x1= ir.value()
+                if z > y:
+                        z = z
+                        an
+#                elif z < y:
+                else:
+                        z = y
+                        an = (1500,-350,350)
+                sleep(1)
+                if z > 35:
+                        an
+                else:
+                        an = (2500,-350,350)
 		sleep(1)
-		print (x1)
-		if x > x1:
-			z = x
-			an = (1500,350,-350)
-		else:
-			z = x1
-			an = (750,350,-350)
-
-		muestra()
-		xy = ir.value()
-		print(1)
-		print(xy)
-
-		muestra()
-		y1 = irvalue()
-		pritn(y1)
-		if z > y1:
-			z = z
-			an
-		else:
-			z = y1
-			an = (500,-525,525)
-
-		muestra()
-		y = irvalue()
-		print(y)
-		if z > y:
-			z = z
-			an
-#		elif z < y:
-		else:
-			z = y
-			an = (1000,-525,525)
-#		else:
-		if z > 35:
-			an
-		else:
-			z = 0
-			an = (2000,-525,525)
-
 ##Condicion para vuelta##
-#	        Sound.speak('Left').wait()
-		a,b,c = an
+#               Sound.speak('Left').wait()
+                a,b,c = an
                 m_i.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
+                print(m_i.time_sp,m_i.speed_sp)
+
                 m_d.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
+                print(m_d.time_sp,m_d.speed_sp)
+
                 md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold")
                 m_i.wait_while('runnig')
                 m_d.wait_while('runnig')
                 m_i.position = 0
                 m_d.position = 0
-		integral_x = 0
-		integral_y = 0
 
 m_i.stop()
 m-d.stop()
 print ("Fin")
 ##Sound.speak('Closed program').wait()
+
