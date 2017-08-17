@@ -27,6 +27,14 @@ def muestra():
         md.wait_while('runnig')
         sleep(1)
 
+def vuelta(a,b,c):
+        m_i.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
+        print(m_i.time_sp,m_i.speed_sp)
+        m_d.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
+        print(m_d.time_sp,m_d.speed_sp)
+        m_i.wait_while('runnig')
+        m_d.wait_while('runnig')
+
 #Datos de las ganancias##
 X_REF = 130
 Y_REF = 130
@@ -54,6 +62,9 @@ integral_y = 0
 derivative_y = 0
 last_dy = 0
 
+z = 0
+an = 0
+a,b,c = 0,0,0
 ##Entrando al ciclo while##
 while not ts.value():
 
@@ -65,21 +76,21 @@ while not ts.value():
                 md.stop()
 
 ##Funcion del PID para que el motor llegue a su velocidad optima##
-                x = ir.value()
-                y = ir.value()
-                dx = X_REF - x
-                integral_x = integral_x + dx
-                derivative_x = dx - last_dx
-                speed_x = KP*dx + KI*integral_x + KD*derivative_x
-                dy = Y_REF - y
-                integral_y = integral_y + dy
-                derivative_y = dy - last_dy
-                speed_y = KP*dy + KI*integral_y + KD*derivative_y
+#                x = ir.value()
+ #               y = ir.value()
+  #              dx = X_REF - x
+   #             integral_x = integral_x + dx
+    #            derivative_x = dx - last_dx
+     #           speed_x = KP*dx + KI*integral_x + KD*derivative_x
+      #          dy = Y_REF - y
+       #         integral_y = integral_y + dy
+        #        derivative_y = dy - last_dy
+         #       speed_y = KP*dy + KI*integral_y + KD*derivative_y
 
-                m_i.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
-                m_d.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
-                last_dx = dx
-                last_dy = dy
+          #      m_i.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+           #     m_d.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+            #    last_dx = dx
+             #   last_dy = dy
 ##Aqui termina el PID##
 
 ##Para determinar la distacia que recorre el robot se toma como parametro la posicion de los motorres##
@@ -93,6 +104,12 @@ while not ts.value():
 ##Se detienen los motores grandes por estar en "run_forever"
                 m_i.stop()
                 m_d.stop()
+#                m_i.run_timed(time_sp= 1500, speed_sp= -350, stop_action='brake')
+ #               print(m_i.time_sp,m_i.speed_sp)
+  #              m_d.run_timed(time_sp= 1500, speed_sp= 350, stop_action='brake')
+   #             print(m_d.time_sp,m_d.speed_sp)
+    #            m_i.wait_while('runnig')
+     #           m_d.wait_while('runnig')
 
                 md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
                 md.wait_while('runnig')
@@ -108,7 +125,7 @@ while not ts.value():
                 if x > x1:
                         z = x
                         an = (1500,350,-350)
-                else:
+                if x < x1:
                         z = x1
                         an = (750,350,-350)
 
@@ -118,45 +135,44 @@ while not ts.value():
                 print(xy)
 
                 muestra()
-                y1 = irvalue()
-                pritn(y1)
+                y1 = ir.value()
+                print(y1)
                 if z > y1:
                         z = z
                         an
-                else:
+                if z > y1:
                         z = y1
                         an = (750,-350,350)
 
                 muestra()
-                y = irvalue()
+                y = ir.value()
                 print(y)
                 if z > y:
-                        z = z
+                        z 
                         an
 #               elif z < y:
-                else:
-                        z = y
+                if z < y:
+                        z 
                         an = (1500,-350,350)
 #               else:
-                if z > 35:
-                        an
-                else:
-                        z = 0
-                        an = (2500,-350,350)
+                sleep(1)
+                md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold")
+                md.wait_while('runnig')
+                sleep(1)
 
 ##Condicion para vuelta##
 #               Sound.speak('Left').wait()
                 a,b,c = an
-                m_i.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
-                m_d.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
-                md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold")
-                m_i.wait_while('runnig')
-                m_d.wait_while('runnig')
+                print(an)
+
+                vuelta(a,b,c)
+
                 m_i.position = 0
                 m_d.position = 0
 
 m_i.stop()
-m-d.stop()
+m_d.stop()
+md.stop()
 print ("Fin")
 ##Sound.speak('Closed program').wait()
 
