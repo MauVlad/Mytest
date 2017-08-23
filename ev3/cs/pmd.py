@@ -15,55 +15,70 @@ lim = 40
 
 #while not ts.value():
  #       v = ((ir.value()) * 0.7)
+while not ts.value():
 
-md.run_to_rel_pos(position_sp=-175, speed_sp=350, stop_action="hold")
-md.wait_while('runnig')
-sleep(1)
-x = ir.value()
-print(x)
-muestra()
-x1= ir.value()
-print (x1)
-if x > x1:
-        z = x
-        an = 90
-else:
-        z = x1
-        an = 45
-muestra()
-xy = ir.value()
-print(xy)
+	v = ir.value()
+	if v > 30:
+		print("run")
+		sleep(1)
 
-muestra()
-y1 = ir.value()
-print(y1)
-if z > y1:
-        z = z
-        an
-else:
-        z = y1
-        an = -45
-muestra()
-y = ir.value()
-print(y)
+	else:
 
+		md.run_to_rel_pos(position_sp=-175, speed_sp=350, stop_action="hold")
+		md.wait_while('runnig')
+		sleep(1)
+		x = ir.value()
+		sleep(1)
+		print(x)
+		muestra()
+		x1= ir.value()
+		sleep(1)
+		print (x1)
+		if x > x1:
+			z = x
+			an = 90
+		else:
+			z = x1
+			an = 45
 
-md.run_to_rel_pos(position_sp=-175, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
-md.wait_while('runnig')
+		muestra()
+		xy = ir.value()
+		sleep(1)
+		print(xy)
+
+		muestra()
+		y1 = ir.value()
+		sleep(1)
+		print(y1)
+		if z > y1:
+			z = z
+			an
+		else:
+			z = y1
+			an = -45
+		muestra()
+		y = ir.value()
+		sleep(1)
+		print(y)
 
 #z = (x,x1,xy,y1,y)
-if z > y:
-        z = z
-        an
-elif z < y:
-        z = y
-        an = -90
-else:
-        z = 0
-        an = 180
+		if z > y:
+			z = z
+			an
+		elif z < y:
+			z = y
+			an = -90
+		else:
+			z = 0
+			an = 180
 
-print (z,an)
+		print (z,an)
+		print(1)
 
+		md.run_to_rel_pos(position_sp=-175, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
+		md.wait_while('runnig')
+
+		md.stop
 """if x > lim:
 	x = x
 	print(x,90)
