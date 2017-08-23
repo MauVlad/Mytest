@@ -34,26 +34,26 @@ while True:
 	print (m1)
 	s1.send_string('enviado')
 
-	m2=s2.recv()
-	s2.send_string('enviado')
-	print(m2)
+#	m2=s2.recv()
+#	s2.send_string('enviado')
+#	print(m2)
 
-	m3=s3.recv()
-	print(m3)
-	s3.send_string('enviado')
+#	m3=s3.recv()
+#	print(m3)
+#	s3.send_string('enviado')
 
-	c = float(m)
-	an = float(m1)
-	d = d + an
-	a = c*mt.cos(mt.radians(d))
-	b = c*mt.sin(mt.radians(d))
+#	c = float(m)
+#	an = float(m1)
+#	d = d + an
+#	a = c*mt.cos(mt.radians(d))
+#	b = c*mt.sin(mt.radians(d))
 
-	x =(j,(a + j))
-	y =(k,(b + k))
-	print (x,y)
+#	x =(j,(a + j))
+#	y =(k,(b + k))
+#	print (x,y)
 
-	plt.plot(x,y)
-	plt.savefig('lgra.jpg')
-	j,k = (a + j,b + k)
-	an = float(m2)
+#	plt.plot(x,y)
+#	plt.savefig('lgra.jpg')
+#	j,k = (a + j,b + k)
+#	an = float(m2)
 
