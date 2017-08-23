@@ -32,17 +32,17 @@ def muestra():
         md.wait_while('runnig')
         sleep(1)
 
-#def vuelta(a,b,c):
- #       ml.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
-  #      print(m_i.time_sp,m_i.speed_sp)
-   #     mr.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
-    #    print(m_d.time_sp,m_d.speed_sp)
-     #   ml.wait_while('runnig')
-      #  mr.wait_while('runnig')
+def vuelta(a,b,c):
+        ml.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
+        print(ml.time_sp,ml.speed_sp)
+        mr.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
+        print(mr.time_sp,mr.speed_sp)
+        ml.wait_while('runnig')
+        mr.wait_while('runnig')
 
 #Datos de las ganancias##
 X_REF = 120
-Y_REF = 150
+Y_REF = 120
 KP = 0.4
 KI = 0.01
 KD = 0.005
@@ -62,11 +62,10 @@ last_dy = 0
 ##Entrando al ciclo while##
 while not ts.value():
 
-        z = 0
-        #an = 0
-        a,b,c = 0,0,0
-
         v = ((ir.value()) * 0.7) ##convercion a cm de la distacia detectada
+
+        z = 0
+        a,b,c = 0,0,0
 
 ##Primera condicion por arriba de un valor de v el robot se movera##
         if v > 35:
@@ -85,58 +84,76 @@ while not ts.value():
                 derivative_y = dy - last_dy
                 speed_y = KP*dy + KI*integral_y + KD*derivative_y
 
-                ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
-                mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                ml.run_forever(speed_sp = 350)#lim_speed(GAIN * (speed_y + speed_x)))
+                mr.run_forever(speed_sp = 350)#lim_speed(GAIN * (speed_y + speed_x)))
                 last_dx = dx
                 last_dy = dy
 ##Aqui termina el PID##
 
 ##Para determinar la distacia que recorre el robot se toma como parametro la posicion de los motorres##
                 pos =(((ml.position)+(mr.position))/2) ##Posicion absoluta de los dos motores
+                print ((ml.position),(mr.position)) ##Posicion absoluta de los dos motores
                 cm =(pos * 0.0275) ##Convercion a cm por grados
                 rue = (pos/360)
                 print (pos,rue,cm)
+                sleep(1)
 ##Segunda condicion para la toma de decicion##
         else:
 
 ##Se detienen los motores grandes por estar en "run_forever"
-                ml.stop()
-                mr.stop()
+#                ml.stop()
+#                mr.stop()
 
-                ori()
-                x = (ir.value(),1500,350,-350)
-                sleep(1)
-                print(x)
+#                ori()
+#                x = (ir.value(),1500,350,-350)
+#                sleep(1)
+#                print(x)
 
-                muestra()
-                x1= (ir.value(),750,350,-350)
-                sleep(1)
-                print (x1)
+#                muestra()
+#                x1= (ir.value(),750,350,-350)
+#                sleep(1)
+#                print (x1)
 
-                muestra()
+#                muestra()
 
-                muestra()
-                y1 = (ir.value(),750,-350,350)
-                sleep(1)
-                print(y1)
+#                muestra()
+#                y1 = (ir.value(),750,-350,350)
+#                sleep(1)
+#                print(y1)
 
-                muestra()
-                y = (ir.value(),1500,-350,350)
-                sleep(1)
-                print(y)
+#                muestra()
+#                y = (ir.value(),1500,-350,350)
+#                sleep(1)
+#                print(y)
 
-                ori()
-                z = (x,y)
-                z,a,b,c = max(z)
+#                z = (x,x1,y1,y)
+#                z,a,b,c = max(z)
 
-                ml.position = 0
-                mr.position = 0
+#                if z > 0:
 
-                ml.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
-                mr.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
-                ml.wait_while('runnig')
-                mr.wait_while('runnig')
+#                vuelta(a,b,c)
 
+#                ml.position = 0
+#                mr.position = 0
+#                ori()
+
+   ##             ml.run_timed(time_sp= a, speed_sp= b, stop_action='brake')
+     #          mr.run_timed(time_sp= a, speed_sp= c, stop_action='brake')
+      #         ml.wait_while('runnig')
+       #         mr.wait_while('runnig')
+                print("stop")
+
+ml.stop(stop_action="hold")
+mr.stop(stop_action="hold")
+md.stop(stop_action="hold")
+
+ml.stop(stop_action="brake")
+mr.stop(stop_action="brake")
+md.stop(stop_action="brake")
+
+ml.stop(stop_action="coast")
+mr.stop(stop_action="coast")
+md.stop(stop_action="coast")
 
 ml.stop()
 mr.stop()
