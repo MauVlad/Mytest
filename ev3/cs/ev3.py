@@ -13,7 +13,11 @@ ir = InfraredSensor(); assert ir.connected, "Por favor, conecte el InfraredSenso
 ts = TouchSensor(); assert ts.connected, "Por favor, conecte el TouchSensor"
 ##cl = ColorSensor(); assert cl.connected, "Por favor, conecte el ColorSensor"
 
-#Limite de velocidad de los motores##
+##Modo de uso de los sensores##
+ir.mode = 'IR-PROX'
+#cl.mode = 'COL-AMBIENT'
+
+##Limite de velocidad de los motores##
 def lim_speed(speed):
         if speed > 800:
                 speed = 800
@@ -21,7 +25,7 @@ def lim_speed(speed):
                 speed = 450
         return speed
 
-###
+##Definicion de funciones para movimientos##
 def ori():
         md.run_to_rel_pos(position_sp=175, speed_sp=350, stop_action="hold") ##Motor que gira 90 a la derecha
         md.wait_while('runnig')
@@ -40,9 +44,9 @@ def vuelta(a,b,c):
         ml.wait_while('runnig')
         mr.wait_while('runnig')
 
-#Datos de las ganancias##
+##Datos de las ganancias##
 X_REF = 120
-Y_REF = 120
+Y_REF = 150
 KP = 0.4
 KI = 0.01
 KD = 0.005
@@ -63,15 +67,15 @@ last_dy = 0
 while not ts.value():
 
         v = ((ir.value()) * 0.7) ##convercion a cm de la distacia detectada
-
+###variables para dar vuelta en el mismo eje###
         z = 0
         a,b,c = 0,0,0
 
 ##Primera condicion por arriba de un valor de v el robot se movera##
         if v > 35:
                 print (ir.value(), v)
-                md.stop()
 
+                md.stop()
 ##Funcion del PID para que el motor llegue a su velocidad optima##
                 x = ir.value()
                 y = ir.value()
@@ -84,8 +88,17 @@ while not ts.value():
                 derivative_y = dy - last_dy
                 speed_y = KP*dy + KI*integral_y + KD*derivative_y
 
-                ml.run_forever(speed_sp = 350)#lim_speed(GAIN * (speed_y + speed_x)))
-                mr.run_forever(speed_sp = 350)#lim_speed(GAIN * (speed_y + speed_x)))
+###condicion para evitar el inclinamiento al desplasarce###
+                if ml.position == mr.position:
+                       ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                       mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                elif ml.position > mr.position:
+                       mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                       ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                else:
+                       ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                       mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+
                 last_dx = dx
                 last_dy = dy
 ##Aqui termina el PID##
@@ -94,16 +107,19 @@ while not ts.value():
                 pos =(((ml.position)+(mr.position))/2) ##Posicion absoluta de los dos motores
                 print ((ml.position),(mr.position)) ##Posicion absoluta de los dos motores
                 cm =(pos * 0.0275) ##Convercion a cm por grados
-                rue = (pos/360)
+                rue = (pos/360) ##convercion de grados por cm
                 print (pos,rue,cm)
                 sleep(1)
+
 ##Segunda condicion para la toma de decicion##
         else:
 
-##Se detienen los motores grandes por estar en "run_forever"
+###Se detienen los motores grandes por estar en "run_forever"###
 #                ml.stop()
 #                mr.stop()
-
+##Funcion de ori() para la orientacion inicial del muestreo##
+##Funcion de muestra() para tomar muestra cada 45 grados del giro de la cabeza##
+##Funcion de vuelta() para crear el giro del robot##
 #                ori()
 #                x = (ir.value(),1500,350,-350)
 #                sleep(1)
@@ -132,7 +148,7 @@ while not ts.value():
 #                if z > 0:
 
 #                vuelta(a,b,c)
-
+###Comando que formatea la posicion de los motores para volver a comensar un nuevo trayecto##
 #                ml.position = 0
 #                mr.position = 0
 #                ori()
@@ -142,7 +158,11 @@ while not ts.value():
       #         ml.wait_while('runnig')
        #         mr.wait_while('runnig')
                 print("stop")
+                ml.stop()
+                mr.stop()
+                md.stop()
 
+##Generacion de paros completos de los motores##
 ml.stop(stop_action="hold")
 mr.stop(stop_action="hold")
 md.stop(stop_action="hold")
