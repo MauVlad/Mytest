@@ -54,12 +54,25 @@ def vuelta(a,b,c):
         ml.wait_while('runnig')
         mr.wait_while('runnig')
 
+##Definicion de guardado de datos en unarchivo.tx##
+def datos():
+        archi=open('datos/dato.txt', 'a')
+        archi.write('Fecha y Hora: '+ time.strftime("%x ")+ time.strftime("%X")+ '\n')
+        archi.close()
+
+def gdatos(cm,lum,an):
+        archi=open('datos/dato.txt', 'a')
+        archi.write('Distancia avanzada: '+ str(cm) +'cm = '+ str(cm * 0.01) + 'm = '+ str(m * 3.28084) +'ft'+'\n')
+        archi.write('Detecion de luz ambiental: ' + str(lum) +'%'+'\n')
+        archi.write('El angulo de giro fue :'+ str(an) +'\n')
+        archi.close()
+
 ##Datos de las ganancias##
 X_REF = 120
 Y_REF = 150
 KP = 0.4
-KI = 0.01
-KD = 0.005
+KI = 0.02
+KD = 0.05
 GAIN = 10
 
 ##Datos iniciales##
@@ -81,15 +94,14 @@ while not ts.value():
         z,an = 0,0
         a,b,c = 0,0,0
 
-        s.send_string(v)
+        s.send_string(str(v))
         vi=s.recv()
 
 ##Primera condicion por arriba de un valor de v el robot se movera##
         if float(vi) > 35:
 
 		lum = cl.value()
-
-                s1.send_string(lum)
+                s1.send_string(str(lum))
 
                 md.stop()
 ##Funcion del PID para que el motor llegue a su velocidad optima##
@@ -115,11 +127,8 @@ while not ts.value():
 ##Para determinar la distacia que recorre el robot se toma como parametro la posicion de los motorres##
                 pos =(((ml.position)+(mr.position))/2) ##Posicion absoluta de los dos motores
                 print ((ml.position),(mr.position)) ##Posicion absoluta de los dos motores
-                cm =(pos * 0.0275) ##Convercion a cm por grados
-                rue = (pos/360) ##convercion de grados por cm
-                print (pos,rue,cm)
 
-                s2.send_string(pos)
+                s2.send_string(str(pos))
                 cm=s2.recv()
  
                 sleep(1)
@@ -154,17 +163,19 @@ while not ts.value():
                 z = (x,x1,y1,y)
                 z,a,b,c = max(z)
 
-                def angulo(a,b,c):
-                        if b > c:
-                                an = a * 0.06
-                        else:
-                                an = a * -0.06
+                #def angulo(a,b,c):
+                if b > c:
+                        an = a * 0.06
+                else:
+                        an = a * -0.06
 
-                        s3.send_string(an)
-                        ani=s3.recv()
-                        ##Sound.speak('Angle of rotation of' + ani).wait()
+                s3.send_string(str(an))
+                ani=s3.recv()
+                ##Sound.speak('Angle of rotation of' + ani).wait()
 
-                angulo(a,b,c)
+                #angulo(a,b,c)
+                datos()
+                gdatos(cm,lum,an)
 
                 vuelta(a,b,c)
 ###Comando que formatea la posicion de los motores para volver a comensar un nuevo trayecto##
