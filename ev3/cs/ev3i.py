@@ -31,8 +31,8 @@ s3.connect("tcp://192.168.1.90:5376")
 
 ##Limite de velocidad de los motores##
 def lim_speed(speed):
-        if speed > 800:
-                speed = 800
+        if speed > 750:
+                speed = 750
         elif speed < 450:
                 speed = 450
         return speed
@@ -117,8 +117,15 @@ while not ts.value():
                 speed_y = KP*dy + KI*integral_y + KD*derivative_y
 
 ###condicion para evitar el inclinamiento al desplasarce###
-                mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
-                ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                if ml.position == mr.position:
+                       ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                       mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)))
+                elif ml.position > mr.position:
+                       mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)) + .5)
+                       ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)) - .5)
+                else:
+                       ml.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)) + .5)
+                       mr.run_forever(speed_sp = lim_speed(GAIN * (speed_y + speed_x)) - .5)
 
                 last_dx = dx
                 last_dy = dy
