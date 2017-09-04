@@ -12,11 +12,11 @@ mr = LargeMotor ('outC') ## Motor derecho
 
 ir = InfraredSensor(); assert ir.connected, "Por favor, conecte el InfraredSensor"
 ts = TouchSensor(); assert ts.connected, "Por favor, conecte el TouchSensor"
-##cl = ColorSensor(); assert cl.connected, "Por favor, conecte el ColorSensor"
+cl = ColorSensor(); assert cl.connected, "Por favor, conecte el ColorSensor"
 
 ##Modo de uso de los sensores##
 ir.mode = 'IR-PROX'
-#cl.mode = 'COL-AMBIENT'
+cl.mode = 'COL-AMBIENT'
 
 ##Crendo y definiendo los puertos de coneccion con el servidor##
 context = zmq.Context()
@@ -62,7 +62,7 @@ def datos():
 
 def gdatos(cm,lum,an):
         archi=open('datos/dato.txt', 'a')
-        archi.write('Distancia avanzada: '+ str(cm) +'cm = '+ str(cm * 0.01) + 'm = '+ str(m * 3.28084) +'ft'+'\n')
+        archi.write('Distancia avanzada: '+ str(cm) +'cm = '+ str(cm * 0.01) + 'm = '+ str(cm * 3.28084) +'ft'+'\n')
         archi.write('Detecion de luz ambiental: ' + str(lum) +'%'+'\n')
         archi.write('El angulo de giro fue :'+ str(an) +'\n')
         archi.close()
@@ -86,6 +86,7 @@ integral_y = 0
 derivative_y = 0
 last_dy = 0
 
+print("Conectado!!")
 ##Entrando al ciclo while##
 while not ts.value():
 
@@ -100,8 +101,9 @@ while not ts.value():
 ##Primera condicion por arriba de un valor de v el robot se movera##
         if float(vi) > 35:
 
-		lum = cl.value()
+                lum = cl.value()
                 s1.send_string(str(lum))
+                lumi=s1.recv()
 
                 md.stop()
 ##Funcion del PID para que el motor llegue a su velocidad optima##
@@ -133,11 +135,11 @@ while not ts.value():
 
 ##Para determinar la distacia que recorre el robot se toma como parametro la posicion de los motorres##
                 pos =(((ml.position)+(mr.position))/2) ##Posicion absoluta de los dos motores
-                print ((ml.position),(mr.position)) ##Posicion absoluta de los dos motores
 
                 s2.send_string(str(pos))
                 cm=s2.recv()
- 
+                cm = float(cm)
+
                 sleep(1)
 
 ##Segunda condicion para la toma de decicion##
@@ -146,6 +148,8 @@ while not ts.value():
 ###Se detienen los motores grandes por estar en "run_forever"###
                 ml.stop()
                 mr.stop()
+                integral_x = 0
+                integral_y = 0
 ##Funcion de ori() para la orientacion inicial del muestreo##
 ##Funcion de muestra() para tomar muestra cada 45 grados del giro de la cabeza##
 ##Funcion de vuelta() para crear el giro del robot##
@@ -170,7 +174,9 @@ while not ts.value():
                 z = (x,x1,y1,y)
                 z,a,b,c = max(z)
 
-                #def angulo(a,b,c):
+                vuelta(a,b,c)
+
+
                 if b > c:
                         an = a * 0.06
                 else:
@@ -178,13 +184,12 @@ while not ts.value():
 
                 s3.send_string(str(an))
                 ani=s3.recv()
-                ##Sound.speak('Angle of rotation of' + ani).wait()
+                Sound.speak('Angle of rotation of' + str(ani)).wait()
 
                 #angulo(a,b,c)
                 datos()
                 gdatos(cm,lum,an)
 
-                vuelta(a,b,c)
 ###Comando que formatea la posicion de los motores para volver a comensar un nuevo trayecto##
                 ml.position = 0
                 mr.position = 0
@@ -207,5 +212,4 @@ ml.stop()
 mr.stop()
 md.stop()
 print ("Fin")
-##Sound.speak('Closed program').wait()
-
+Sound.speak('Closed program').wait()
