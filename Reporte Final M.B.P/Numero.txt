@@ -220,3 +220,4 @@ Figura 34.5 Datos que la plataforma muestra.
 
 Figura 34.6 Datos que almacena la plataforma.
 
+Figura 34.7 Grafica del mapeo del robot generado por la plataforma.
