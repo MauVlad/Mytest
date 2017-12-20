@@ -1,0 +1,20 @@
+git : comando iniciial para GIT, siguiente comando a usar.
+git config --global user.name "Nom_Usr"
+git config --global user.email "<Email_id>"
+git remote add origin 'direncion  'https'
+git init "nombre carp": crea un nuevo repositori
+git clone "parametro": clona repositorios
+git status: muestra cambios e informacion
+git commit: crea mensaje de informacion de cambios de los repositorios
+git add 'agregar archivo': agrega los archivos que se envian al repositorio origen
+git rm "archivo": elimina el archivo del sistema
+git reset HEAD "archivo": elimina de la listas de envio para repositorio origen
+git reset --soft HEAD~ : deshace el ultimo commit..
+git reset --hard HEAD : deshace ultimo commit y saca los archivos (los regresa al repositorio).
+git log: muestra los commit hechos --oneline
+git branch "nuevo nom":crea ramas las muestra si no das nombre, eliminas con una "-d" antes del nombre de la rama
+git checkout "nombre rama": pasa a la rama que se creo "-b" crear y pasar a la rama
+git merge "rama a fucionar" : fuciona ramas de la oorigen y la que se fuciona
+git tag "Nom commit" o "nom commit" "N°commit": crea un nombre sensillo del commit o cambiarle el tag a un commit existente con el numero del mismo
+git pull origin master: descargas repositorios origen 
+git push origin master: carga al repositorio origen

@@ -1,0 +1,9 @@
+ls -l /dev/sd*   : muestra dato donde aparece la memoria usb u otro 
+dispositivo conestado.
+
+lsusb  :  muestra las memorias conestadosa que puede leer la maquina.
+
+sudo mount -t vfat /dev/sdb /media/usb  :  monta la usb en la direcion 
+"usb".
+
+Nota: el "sdb" varia dependiendo de la usb conectada?

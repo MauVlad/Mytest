@@ -1,0 +1,3 @@
+/etc/apt/seurces.list
+/etc/network/interfaces
+

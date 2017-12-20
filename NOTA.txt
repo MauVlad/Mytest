@@ -1,0 +1,7 @@
+instale paquetes de c++?, para ev3dev?
+
+comando usado
+
+sudo apt-get install build-essential
+
+

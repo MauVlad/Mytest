@@ -1,0 +1,28 @@
+
+mkdir:crea directorios
+cd: ir a un directorio o usarlo solo regresa a home
+rmdir: borra directorios
+rm:borra archivo
+mv: mueve archivo /mv /arquivoamover /directorio de destino
+less: lee archivos
+nano:crea ficheros y modifica
+pico:crea ficheros y modifica
+touch:crea ficheros bacios
+ls: muestra los direntorios
+echo: imprime caracter 
+pwd:direccion en la que se esta
+expr: operaciones + - /... (cual multiplica)
+cp: copia archivo 
+bc: calculadora binaria (scale: para los decimadles)
+cat:muestra archivos
+date:muestra fecha
+cal: muestra el caliendario, solo mes actul
+diff:muetra las diferencias de archivos
+df:muestra el espacio del disco
+du: muestra la informacion de espacion de archivos,ficheros,directorios
+usermod:cambia el usuario -l y directotio -d
+sudo: por defeto para usar comandos como root
+apt-get install "Nombre del paquete":instala paquetes comandos
+apt-get remove "N p":desinstala el paquete
+apt-get purge "N p":borra los archivos de configuracion del paquete 
+apt-get clean "N p":borra los archivos para intalar del disco duro (limpieza)
