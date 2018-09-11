@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introducci\IeC {\'o}n}{3}{0}{1}
+\beamer@sectionintoc {2}{Basico}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Tabla de tipos de Tensor}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Inputs and Readers}{10}{0}{2}
+\beamer@sectionintoc {3}{c3}{20}{0}{3}

@@ -1,0 +1,229 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.13)  16 NOV 2017 19:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**rubrica-iotec.tex
+(./rubrica-iotec.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2014/10/28 v2.10 `tabularx' package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen103
+\extrarowheight=\dimen104
+\NC@list=\toks14
+\extratabsurround=\skip43
+\backup@length=\skip44
+)
+\TX@col@width=\dimen105
+\TX@old@table=\dimen106
+\TX@old@col=\dimen107
+\TX@target=\dimen108
+\TX@delta=\dimen109
+\TX@cols=\count87
+\TX@ftn=\toks15
+)
+No file rubrica-iotec.aux.
+\openout1 = `rubrica-iotec.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 18.
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¡ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¡ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[]|\OT1/cmr/m/n/12 B.D. y colec-ciones
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[]|\OT1/cmr/m/n/12 1) B.D colec-ciones
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 con datos de prueba:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 pos-i-tivos(2pts), 3)
+ []
+
+
+Underfull \hbox (badness 3657) in paragraph at lines 71--71
+[]|\OT1/cmr/m/n/12 FrontEnd en pro-duc-
+ []
+
+
+Underfull \hbox (badness 4001) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 cion y capa rest-api
+ []
+
+
+Underfull \hbox (badness 5133) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 con se-guri-dad im-ple-
+ []
+
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¡ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 3) Conec-tivi-dad con
+ []
+
+
+Underfull \hbox (badness 5203) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 mon-godb en pro-duc-
+ []
+
+
+Underfull \hbox (badness 4266) in paragraph at lines 71--71
+[]|\OT1/cmr/m/n/12 Rasbian in-sta-l-ado en
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 71--71
+[]|\OT1/cmr/m/n/12 1) Rasp-bian in-sta-l-ado
+ []
+
+
+Underfull \hbox (badness 3657) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 zmq, con-fig-u-ra-cion y
+ []
+
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 pts), 3) pro-grama
+ []
+
+
+Underfull \hbox (badness 3930) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 cliente ho-la-mundo (3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 pts), 4) Pro-grama
+ []
+
+
+Underfull \hbox (badness 6910) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 servi-dor "ho-la-mundo"
+ []
+
+
+Underfull \hbox (badness 5741) in paragraph at lines 71--71
+[]|\OT1/cmr/m/n/12 Programa en python
+ []
+
+
+Underfull \hbox (badness 1968) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 y zmq para trans-mi-
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 sado, trans-mi-sion de
+ []
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 sado (5pts), 2) Pro-
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 grama de trans-mi-sion
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 de im-a-genes im-a-genes
+ []
+
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
+
+Underfull \hbox (badness 3919) in paragraph at lines 71--71
+\OT1/cmr/m/n/12 cin (3 pts), 3) Or-
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \vbox (171.18314pt too high) has occurred while \output is active []
+
+
+[2] (./rubrica-iotec.aux) ) 
+Here is how much of TeX's memory you used:
+ 330 strings out of 494910
+ 3746 string characters out of 6179835
+ 61200 words of memory out of 5000000
+ 3692 multiletter control sequences out of 15000+600000
+ 8802 words of font info for 31 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 22i,9n,19p,240b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on rubrica-iotec.pdf (2 pages, 65613 bytes).
+PDF statistics:
+ 31 PDF objects out of 1000 (max. 8388607)
+ 21 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

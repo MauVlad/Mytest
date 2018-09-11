@@ -1,0 +1,307 @@
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemeshadow}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{ragged2e}
+
+%Empieza el documento
+\begin{document}
+% Definimos titulo, autor, fecha.
+\title{TensorFlow}
+\author{M.B.P.}
+\date{\today}
+\maketitle
+
+\newpage
+\begin{frame}\frametitle{Resumen}
+Aca va el resumen del trabajo
+\end{frame}
+
+\newpage
+\section{Introduccion}
+\begin{frame}\frametitle{¿Qué es TensorFlow?} 
+Se trata de una librería de código abierto desarrollada por Google
+para facilitar el diseño, construcción y entrenamiento de sistemas
+de aprendizaje profundo.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{¿Qué es un tensor?} 
+Un tensor es una generalización de vectores y matrices
+potencialmente altas dimensiones. Internamente, TensorFlow
+representa tensores como matrices n-dimensiones de base
+datatypes.\\
+\vspace{5mm}
+Un tf.Tensor tiene las siguientes propiedades:\\
+\vspace{5mm}
+• Un tipo de dato (float32, int32, o cadena, por ejemplo).\\
+• Una forma (es decir, el número de dimensiones que tiene\\
+\hspace{4mm}y el tamaño de cada dimensión).\\
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{¿Como importar la librería?} 
+Para importar la libreria de TensorFlow en cualquier proyecto se
+usa el comando:
+
+\begin{center}
+\textbf{import tensorflow as tf}
+\end{center}
+
+\end{frame}
+
+\newpage
+\section{Basico}
+\begin{frame}\frametitle{Tipo de Tensor}
+Tensorflow trabaja con diferentes tipos de elementos denominados
+tensor,estos deben ser declarados para su uso dentro de la seccion
+del tensor.
+\end{frame}
+
+\newpage
+\subsection{Tabla de tipos de Tensor}
+\begin{frame}\frametitle{Tabla de tipos de Tensor}
+\begin{tabular}{|l|c|}
+\hline
+Tipo & Descripción\\ \hline
+tf.float16 & Punto flotante de precisión media de 16 bits\\ \hline
+tf.float32 & Punto flotante de precisión simple de 32 bits\\ \hline
+tf.float64 & Punto flotante de doble precisión de 64 bits\\ \hline
+tf.bfloat16 & Punto flotante truncado de 16 bits\\ \hline
+tf.complex64 & Complejo de precisión simple de 64 bits\\ \hline
+tf.complex128 & Complejo de doble precisión de 128 bits\\ \hline
+tf.int8 & Entero con signo de 8 bits\\ \hline
+tf.uint8 & Entero sin signo de 8 bits\\ \hline
+tf.uint16 & Entero sin signo de 16 bits\\ \hline
+\end{tabular}
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Tabla de tipos de Tensor}
+\begin{tabular}{|l|c|}
+\hline
+Tipo & Descripción\\ \hline
+tf.int16 & Entero con signo de 16 bits\\ \hline
+tf.int32 & Entero con signo de 32 bits\\ \hline
+tf.int64 & Entero con signo de 64 bits\\ \hline
+tf.bool & Booleano\\ \hline
+tf.qint8 & Entero cuantificado de 8 bits con signo\\ \hline
+tf.quint8 & Número entero sin signo de 8 bits cuantificado\\ \hline
+tf.qint16 & Entero cuantificado de 16 bits con signo\\ \hline
+tf.quint16 & Número entero sin signo de 16 bits cuantificado\\ \hline
+tf.qint32 & Número entero con signo de 32 bits cuantificado\\ \hline
+\end{tabular}
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Declaracion de variables}
+En la sintaxi de python las variables se declaran de forma sencilla
+como enteros o flotantes:\\
+\vspace{5mm}
+\begin{tabular}{l c}
+x = 12 & esta variable sera entera.\\
+y = 2.5 & esta variable sera flotante.\\
+\end{tabular}\\
+\vspace{5mm}
+Cuando se pretende usar TensorFlow la declaracion de las variables
+cambia teniendo una forma mas especial en la sintaxi:\\
+\vspace{5mm}
+\begin{tabular}{l}
+x = tf.constant(3.0, dtype=tf.float32)\\
+y = tf.constant(4.0)\\
+\end{tabular}\\
+\vspace{5mm}
+En este caso ambas son reconocidas como tipo float pero
+declaradas de diferente manera.
+\end{frame}
+
+\newpage
+\subsection{Inputs and Readers}
+\begin{frame}\frametitle{Inputs and Readers}
+\textbf{Placeholders}\\
+TensorFlow proporciona una operación de marcador de posición
+que debe ser alimentado con los datos sobre la ejecución:\\
+\vspace{5mm}
+• tf.placeholder\\
+• tf.placeholder\_with\_default\\
+\vspace{5mm}
+Para la alimentación de SparseTensors que son de tipo compuesto,
+hay una función de confort:\\
+\vspace{5mm}
+• tf.sparse\_placeholder
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Inputs and Readers}
+\textbf{Readers}\\
+TensorFlow proporciona un conjunto de clases Reader para leer
+formatos de datos:\\
+\vspace{5mm}
+•tf.ReaderBase\\
+•tf.TextLineReader\\
+•tf.WholeFileReader\\
+•tf.IdentityReader\\
+•tf.TFRecordReader\\
+•tf.FixedLengthRecordReader\\
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis Inputs}
+Usando \textcolor{blue}{placeholder} de la siguiente manera:\\
+placeholder(dtype, shape=None, name=None)\\
+\vspace{2.5mm}
+\textcolor{blue}{dtype} es el tipo de elemento del tensor que sera alimentado.\\
+\vspace{2.5mm}
+\textcolor{blue}{shape} es la forma del tensor para ser alimentado esta puede ser
+opcional si no se especifica la forma esta se adatara con lo que esta alimentado.\\
+\vspace{2.5mm}
+\textcolor{blue}{name} nombre para la operacion igual es opcional.\\
+\vspace{5mm}
+\textcolor{red}{Importante}: Este tensor producirá un error si se evalúa. Su valor debe ser alimentado mediante el uso de \textcolor{blue}{feed\_dict}, argumentos opcionales como \textcolor{blue}{Session.run()}, \textcolor{blue}{Tensor.eval()}, o \textcolor{blue}{Operation.run()}.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis Inputs}
+Usando \textcolor{blue}{placeholder\_with\_default} de la siguiente manera:\\
+placeholder\_with\_default(input, shape, name=None)\\
+\vspace{2.5mm}
+\textcolor{blue}{input} un Tensor que es el valor predeterminado para producir cuando la salida no se alimenta.\\
+\vspace{2.5mm}
+\textcolor{blue}{shape} puedeser un \textcolor{blue}{tf.TensorShape} o lista de \textcolor{blue}{ints}. La forma (posiblemente parcial) del tensor.\\
+\vspace{2.5mm}
+\textcolor{blue}{name} un nombre para la operacion (opcional).
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis Inputs}
+Usando \textcolor{blue}{sparse\_placeholder} de la siguiente manera:\\
+sparse\_placeholder(dtype, shape=None, name=None)\\
+\vspace{2.5mm}
+\textcolor{blue}{dtype} es el tipo de elemento del tensor que sera alimentado.\\
+\vspace{2.5mm}
+\textcolor{blue}{shape} la forma del tensor a alimentar (opcional). Si no se especifica la forma, puede alimentar un tensor disperso de cualquier forma.\\
+\vspace{2.5mm}
+\textcolor{blue}{name} nombre para la operacion igual es opcional.\\
+\vspace{5mm}
+\textcolor{red}{Importante}: Este tensor escaso producirá un error si se evalúa. Su valor debe alimentarse utilizando el argumento opcional \textcolor{blue}{feed\_dict} para \textcolor{blue}{Session.run ()}, \textcolor{blue}{Tensor.eval ()}, o \textcolor{blue}{Operation.run ()}.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis Readers}
+
+\end{frame}
+
+\newpage
+\subsection{Operaciones Básicas}
+\begin{frame}\frametitle{Comandos: Operaciones Básicas}
+\begin{tabular}{|l|c|}
+\hline
+Comando & Accion\\ \hline
+add() & Suma entre dos nodos ($x + y$)\\ \hline
+subtract() & Resta entre dos nodos ($x - y$)\\ \hline
+multiply() & Multiplicacion entre dos nodos ($x * y$)\\ \hline
+div() & Divicion entre dos nodos ($\frac{x}{y}$)\\ \hline
+square() & Determina el cuatrado de un nodo ($x^{2}$)\\ \hline
+pow() & Calcula la potencia de un nodo ($x^{y}$)\\ \hline
+sqrt() & Determina la raiz cuadrada de un nodo ($\sqrt{x}$)\\ \hline
+\end{tabular}
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis}
+Para el uso de cada comando es neceario entender su sitaxis y los
+elementos que la componen en cada caso estan compuestos de tres
+elementos pero puede variar dependiendo de la funcion:\\
+\vspace{5mm}
+Un elemento que se encuentra presente en estos comandos es el
+\textcolor{blue}{name} el cual da un nombre para la operacion a realizar (este es
+opcional y no afecta al uso de la misma).
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis}
+\begin{footnotesize}
+Para la suma con el \textcolor{blue}{add} seria:\\
+add(x, y, name=None)\\ \vspace{2.5mm}
+• x,y seran un tensor del mismo tipo, los cual pueden ser uno de los siguientes
+tipos: \textcolor{blue}{half, float32, float64, uint8, int8, int16, int32, int64, complex64,
+complex128, string}\\
+El resultado sera del mismo tipo ocupado en dicha función.\\ \vspace{5mm}
+Para la resta usando \textcolor{blue}{subtract} seria:\\
+subtract(x, y, name=None)\\ \vspace{2.5mm}
+• x,y seran un tensor del mismo tipo, los cual pueden ser uno de los siguientes
+tipos: \textcolor{blue}{half, float32, float64, uint8, int8, uint16, int16, int32, int64, complex64,
+complex128}\\
+El resultado sera del mismo tipo ocupado en dicha función.
+\end{footnotesize}
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis}
+\begin{footnotesize}
+Para la multiplicación usando \textcolor{blue}{multiply} tenemos:\\
+multiply(x, y, name=None)\\ \vspace{2.5mm}
+• x,y seran un tensor del mismo tipo, los cual pueden ser uno de los siguientes
+tipos: \textcolor{blue}{half, float32, float64, uint8, int8, uint16, int16, int32, int64, complex64,
+complex128}\\
+El resultado sera del mismo tipo ocupado en dicha función.\\ \vspace{5mm}
+Para la división usando \textcolor{blue}{div} tenemos:\\
+div(x, y, name=None)\\ \vspace{2.5mm}
+• x,y seran un tensor del mismo tipo,el tipo de numerador y denominado deben
+ser numeros reales.\\
+El resultado debera ser el cociente de x,y.
+\end{footnotesize}
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis}
+\begin{footnotesize}
+Para elevar un elemento al cuadrado se usa \textcolor{blue}{square} tenemos:\\
+square(x, name=None)\\ \vspace{2.5mm}
+• x puede ser un tensor o un sparsetensor,el tipo que se puede ocupar es: \textcolor{blue}{half,
+float32, float64, int32, int64, complex64, complex128}\\
+El resultado debe ser del mismo tipo que x.\\ \vspace{5mm}
+Para elevar un elemento en cualquier exponente tenemos \textcolor{blue}{pow}:\\
+pow(x, y, name=None)\\ \vspace{2.5mm}
+• x,y deben ser tensor del mismo tipo, estos tipos son: \textcolor{blue}{float32, float64, int32,
+int64, complex64, or complex128}\\
+El resultado debe ser del mismo tipo del tensor.
+\end{footnotesize}
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Sintaxis}
+Para obtener la raízcuadrada de un elemento se usa \textcolor{blue}{sqrt}:\\
+sqrt(x, name=None)\\ \vspace{2.5mm}
+• x es un tensor o un sparsetensor, el tipo de este puede ser: \textcolor{blue}{half,
+float32, float64, complex64, complex128}\\
+El resultado debe ser un tensor o un sparsetensor del mismo tipo
+ocupado.
+\end{frame}
+
+\newpage
+\begin{footnotesize}
+\begin{lstlisting}[language=Python]
+
+import tensorflow as tf
+
+x = tf.placeholder("float")
+y = tf.placeholder("float")
+
+suma = tf.add(x, y)
+
+sess = tf.Session()
+
+print ('suam=', sess.run(suma, feed_dict={a: 3, b: 3}))
+
+\end{lstlisting}
+\end{footnotesize}
+
+\newpage
+\section{c3}
+Aqui empieza el capitulo sobre estado del arte
+% Termina el documento
+\end{document}

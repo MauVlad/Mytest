@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduccion}{3}{0}{1}
+\beamer@sectionintoc {2}{Basico}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Primeros pasos}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Elementos que se usan en Ev3}{8}{0}{2}
+\beamer@sectionintoc {3}{programando}{12}{0}{3}
+\beamer@subsectionintoc {3}{1}{Uso basico de los sensores}{14}{0}{3}
+\beamer@subsectionintoc {3}{2}{Infrarrojo}{15}{0}{3}
+\beamer@subsubsectionintoc {3}{2}{1}{Sensor de Colores}{18}{0}{3}
+\beamer@sectionintoc {4}{c3}{19}{0}{4}

@@ -1,0 +1,170 @@
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+\usepackage[utf8]{inputenc}
+\usepackage{beamerthemeshadow}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{soul}
+
+%Empieza el documento
+\begin{document}
+% Definimos titulo, autor, fecha.
+\title{Ev3dev LEGO}
+\author{M.B.P.}
+\date{\today}
+\maketitle
+
+\newpage
+\begin{frame}\frametitle{Resumen}
+Aca va el resumen del trabajo
+\end{frame}
+
+\newpage
+\section{Introduccion}
+\begin{frame}\frametitle{¿Que es Ev3dev?} 
+Ev3dev es un sistema operativo basado en Debían/Linux que se ejecuta en varias plataformas compatibles con LEGO® MINDSTORMS, incluido el LEGO® MINDSTORMS EV3 y Raspberry Pi-powered BrickPi.
+\end{frame}
+% Empezamos capitulos
+
+\newpage
+\begin{frame}\frametitle{¿Como se ejecuta Ev3dev?} 
+No es un firmware, más bien un arranque dual. Ev3dev se ejecuta desde una tarjeta microSD y nunca toca el firmware instalado en el EV3. Para volver a cambiar, simplemente se apaga y retire la tarjeta microSD.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{¿Como se instala Ev3dev?} 
+Su intalacion es muy sencilla esta puede ser llevado como se muestra en la pagina oficial:
+
+\begin{center}
+\textbf{http://www.ev3dev.org/docs/getting-started/}
+\end{center}
+En este sitio se puede descargar la imagen de ev3dev para su intalacion, el programa \textbf{Etcher} para grabar la imagen en la microSD.
+\end{frame}
+
+\newpage
+\section{Basico}
+\subsection{Primeros pasos}
+\begin{frame}\frametitle{Conexión}
+El Ev3 de lego puede ser conectado a una computadora por medio de tres metodos por el cable USB con el que cuenta, conexión de Wi-Fi o por Bluetooth (estos metodos funcionan bien con la aplicación propia de lego).\\ \vspace{5mm}
+Para el sistema EV3dev solo cuenta con dos metodos por el cable USB y la conexión Wi-Fi.\\ \vspace{5mm}
+\textbf{Nota:} En el EV3dev la conexión del Bluetooth es muy poco usada por lo cual no se encuentra información para su configuración.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Importar libreria}
+Para importar la libreria en un proyecto solo vasta con llamarla con el siguente comando:
+
+\begin{center}
+\textbf{import ev3dev.ev3 as ev3\\
+from ev3dev import *}
+\end{center}
+
+El primer comando llama a la libreria y le da un nombre clave para su uso en el codigo.\\
+El segundo comando llama a la libria de forma que es reconocida automatia mente para cada elemento(comunmente esta es la mas utilizada en cualquier ejemplo del ev3 en python).
+\end{frame}
+
+\newpage
+\subsection{Elementos que se usan en Ev3}
+\begin{frame}\frametitle{Elementos que se usan en Ev3}
+\begin{tabular}{l}
+Sensor infrarrojo llamado como \textcolor{blue}{InfraredSensor()}\\
+Sensor de colores llamado como \textcolor{blue}{ColorSensor()}\\
+Motor grande llamado como \textcolor{blue}{LargeMotor()}\\ 
+Motor mediano llamado como \textcolor{blue}{MediumMotor()}\\
+\end{tabular}
+\vspace{5mm} \\
+Estos son los elementos basicos del robot y que vienen con el mismo, pero hay mas dispositivos que pueden ser utilizados en el como el girosensor o una camara especial para lego ev3.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Primeros pasos para programar}
+Como primer paso para programar al ev3 en lenguaje python, hay que a clarar que la libreria de ev3dev funciona solamente en python3 por tanto en cualquier codigo que se lleve acabo debera tener una linea de comando especial ("shebang")que sera:\\
+
+\begin{center}
+\textbf{\#!/usr/bin/env python3}
+\end{center}
+
+Esto le dara una instruccion al bloque ev3 para realizar las operaciones en python3 (esencial para lo programas ejecutables).
+\end{frame}
+
+\newpage
+\begin{frame}
+El ev3 puede ejecutar programas de dos formas:\\ \vspace{5mm}
+La primera forma es desde la consola, en esta solo es necesario crear el script y ejecutarlo con el comando \colorbox{yellow}{python3 Nombreproyecto.py}.\\
+\end{frame}
+
+\newpage
+\begin{frame}
+La segunda forma es mediante el propio bloque plogramable (Ev3) en este caso se puede crear el script desde la consola de igual forma que la anterior o en el Ev3 lo cual requiere un teclado conectado al mismo (por lo cual no es recomendable ya que se cuenta con una pequeña pantalla), en cualquier caso el script debe ser ejecutable por lo cual para darle este modo se usa el siguente comando \colorbox{yellow}{chmod +x proyecto.py}, con esto solo es nesesario buscarlo desde la pantalla del EV3 y seleccionarlo.\\
+\end{frame}
+
+\newpage
+\section{programando}
+\begin{frame}\frametitle{Conociendo EV3}
+La programacion del bloque EV3 comienza desde el mismo bloque, ya que con el sistema linux junto con el lenguaje python puede realizar tareas de ejecucion simple por ejemplo ejecutar una calculadora desde la consola,mostrar algo en la pantalla del EV3 como resultados o imagenes que soporte e mismo y por ultimo el uso de los led y botones que estan integrados en el EV3.
+\end{frame}
+
+\newpage
+\begin{frame}
+Para llevar acabo más acciones con el EV3 es neceario tener más dispositivos para su uso , como lo son los motores y sensores compatibles con lego EV3 como se a mencionado antes cada uno debe ser llamado para su uso.\\
+\textbf{Nota:} En el caso de las entradas no es neseario definir un puerto pero por el otro lado las saidas es mas recomendable definir cada puerto ocupado.
+\end{frame}
+
+\newpage
+\subsection{Uso basico de los sensores}
+\begin{frame}\frametitle{Uso basico de los sensores}
+El Ev3 de lego tiene una gama basica de sensores (a estos se les une los sensores de su predecesor ya que son compatibles), estos sensores pueden ocuparce para medir diferentes variables como la intencidad de la luz, temperatura, distacias de objetos, etc.\\ \vspace{5mm}
+Con el sistema Ev3dev no hay grades cambios de los sensores y algunos pueden ser usados de maneras que en la programacion original no era posible.
+\end{frame}
+
+\newpage
+\subsection{Infrarrojo}
+\begin{frame}\frametitle{Infrarrojo}
+El sensor infrarrojo es uno de los sensores basicos del EV3, este sensor debe ser llamado como \colorbox{green}{InfraredSensor()}, este puede ser utilizado de dos modos.uno es el modo proximidad el cual su deteccion llega a los 70cm (0-100 bits) y el modo bazilador el cual detecta la señal del control remoto.
+\end{frame}
+
+\newpage
+\begin{frame}\frametitle{Usando el infrarrojo}
+Vamos a usar el Infrarrojo de tal manera que se mida la distancia y mustre los resultados en la consola y esto esten en distintas unidades de medida.Aclarando que la lectura del sensor se dara en bits por lo cual la conversion debe ser creada.\\
+Tomemos la unidad de medida en cm por tanto se debe hacer una conversion de bits a cm la formula quedaria:\\
+•cm = Centimetros\\
+•Vifr = Valor del infrarrojo\\
+•C = Constant,siendo 0.7cm ya que la distacia maxima del sensor es 70cm por tanto 1 bit es igual a 0.7cm\\
+\begin{center}
+•\textbf{cm = Vifr * C}
+\end{center}
+En dado caso de usar otra unidad de medida se debera ajustar con base a la constante.
+\end{frame}
+
+\newpage
+\begin{small}
+\begin{lstlisting}[language=Python]
+#!/usr/bin/env python3
+
+import ev3dev.ev3 as ev3
+
+from time import sleep
+
+
+ir = ev3.InfraredSensor()
+
+while True:
+	v = ir.value()
+
+	print (v)
+	print ((v * .7), " cm")
+	sleep(1)
+\end{lstlisting}
+\end{small}
+
+\newpage
+\subsubsection{Sensor de Colores}
+\begin{frame}\frametitle{Sensor de Colores}
+
+\end{frame}
+
+\newpage
+\section{c3}
+Aqui empieza el capitulo sobre estado del arte
+% Termina el documento
+\end{document}
