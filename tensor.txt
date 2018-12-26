@@ -1,0 +1,11 @@
+tensorflow==1.4.0
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
+
+https://github.com/tensorflow/models/issues/4223
+
+https://github.com/tensorflow/models/issues/4002
+
+sudo -H pip3 install pandas
+
+
