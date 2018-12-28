@@ -8,4 +8,6 @@ https://github.com/tensorflow/models/issues/4002
 
 sudo -H pip3 install pandas
 
+https://medium.freecodecamp.org/tracking-the-millenium-falcon-with-tensorflow-c8c86419225e
 
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
