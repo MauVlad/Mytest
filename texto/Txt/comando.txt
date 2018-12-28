@@ -5,6 +5,7 @@ rmdir: borra directorios
 rm:borra archivo
 mv: mueve archivo /mv /arquivoamover /directorio de destino
 less: lee archivos
+sed: muestra una linea espesifica 'sed -n numeroline+p nombrearchivo'
 nano:crea ficheros y modifica
 pico:crea ficheros y modifica
 touch:crea ficheros bacios
