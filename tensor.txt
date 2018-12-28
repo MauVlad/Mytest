@@ -11,3 +11,7 @@ sudo -H pip3 install pandas
 https://medium.freecodecamp.org/tracking-the-millenium-falcon-with-tensorflow-c8c86419225e
 
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
+
+https://www.youtube.com/watch?v=COlbP62-B-U
+
+https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/
