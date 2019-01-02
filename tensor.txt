@@ -15,3 +15,7 @@ https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc
 https://www.youtube.com/watch?v=COlbP62-B-U
 
 https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/
+
+https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html?fbclid=IwAR0FgvY7ZqCZMzNnbp909aZRzOldoQKJUSq0Oky5_okb_dfQbqG9fuaxQYg
+
+
