@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Imagenes_generadas</folder>
+	<filename>2.jpg</filename>
+	<path>/home/mau/Mytest/P_R_D/Imagenes_generadas/2.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>600</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>componente_T</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>312</xmin>
+			<ymin>231</ymin>
+			<xmax>514</xmax>
+			<ymax>391</ymax>
+		</bndbox>
+	</object>
+</annotation>

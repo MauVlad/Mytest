@@ -25,6 +25,7 @@ for i in range(num_generar):
     name = ('Imagenes_generadas/' + str(i) + '.jpg')
     img_nueva.save(name)
 
+print('Generadas ' + str(i + 1) + ' imagenes')
 
 for i in lista3:
 
@@ -32,3 +33,5 @@ for i in lista3:
     imag_rotada = imag.rotate(randrange(180))
     x = x + 1
     imag_rotada.save('Imagenes_generadas/mcc_rotada' + str(x) + '.jpg')
+
+print('Rotadas ' + str(x) + ' imagenes')

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Imagenes_generadas</folder>
+	<filename>mcc_rotada2.jpg</filename>
+	<path>/home/mau/Mytest/P_R_D/Imagenes_generadas/mcc_rotada2.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>194</width>
+		<height>186</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>componente_T</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1</xmin>
+			<ymin>1</ymin>
+			<xmax>192</xmax>
+			<ymax>184</ymax>
+		</bndbox>
+	</object>
+</annotation>
